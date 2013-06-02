@@ -1,6 +1,8 @@
 # encoding: utf-8
-require 'taglib'
+
 class TpathUploader < CarrierWave::Uploader::Base
+require 'taglib'
+require "mp3info"
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -12,6 +14,21 @@ class TpathUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :file
+
+  # before :store, :remember_cache_id
+  # after :store, :delete_tmp_dir
+
+  #   def remember_cache_id(new_file)
+  #     @cache_id_was = cache_id
+  #   end
+    
+  #   def delete_tmp_dir(new_file)
+  #     # make sure we don't delete other things accidentally by checking the name pattern
+  #     if @cache_id_was.present? && @cache_id_was =~ /\A[\d]{8}\-[\d]{4}\-[\d]+\-[\d]{4}\z/
+  #       FileUtils.rm_rf(File.join(root, cache_dir, @cache_id_was))
+  #     end
+  #   end
+  # end
     # @trackpath = storage.uploader.to_s
   # storage :fog
 
@@ -29,41 +46,42 @@ class TpathUploader < CarrierWave::Uploader::Base
   #   binding.pry
   #   return @tracklocation    
   # end
-  process :read_id3
+  # process :read_id3
 
-  def read_id3
-    x = "public"+storage.uploader.to_s
-    TagLib::MPEG::File.open(x) do |f|
-    tag = f.id3v2_tag
-    @trackdata = {}
+  # def read_id3
+  #   x = "public"+storage.uploader.to_s
+  #   TagLib::MPEG::File.open(x) do |f|
+  #   tag = f.id3v2_tag
+  #   @track = Track.new
 
-    # Read basic attributes
-    @trackdata[:title] = tag.title
-    @trackdata[:artist] = tag.artist
-    @trackdata[:track] = tag.track
-    @trackdata[:year] = tag.year
-    @trackdata[:album] = tag.album
-    @trackdata[:genre] = tag.genre
-    # binding.pry
-    # Access all frames
-    tag.frame_list.size
+  #   # Read basic attributes
+  #   @track[:title] = tag.title
+  #   # @track[:artist] = tag.artist
+  #   # @track[:track] = tag.track
+  #   # @track[:year] = tag.year
+  #   # @track[:album] = tag.album
+  #   # @track[:genre] = tag.genre
+  #   # # binding.pry
+  #   # # Access all frames
+  #   # # tag.frame_list.size
 
-    # Track frame
-    # track = tag.frame_list('TRCK').first
+  #   # # Track frame
+  #   # # track = tag.frame_list('TRCK').first
 
-    properties = fileref.audio_properties
-    @trackdata[:length] = properties.length
+  #   # properties = f.audio_properties
+  #   # @track[:length] = properties.length
+  #   # @track[:bitrate] = properties.bitrate
 
-    # Attached picture frame
-    cover = tag.frame_list('APIC').first
-    cover.mime_type
-    cover.picture
-    # Track.parse_id3
-    binding.pry
-    return @trackdata
+  #   # # Attached picture frame
+  #   # cover = tag.frame_list('APIC').first
+  #   # cover.mime_type
+  #   # cover.picture
+  #   # Track.parse_id3
+  #   # binding.pry
+  #   # return @trackdata
     
-    end
-  end
+  #   end
+  # end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:

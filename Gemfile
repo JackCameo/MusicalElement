@@ -9,7 +9,8 @@ gem 'pg'
 gem 'devise'
 gem 'carrierwave'
 gem 'taglib-ruby'
-
+gem 'pry'
+gem 'ruby-mp3info'
 
 
 # Gems used only for assets and not required
