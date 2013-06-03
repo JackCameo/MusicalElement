@@ -26,7 +26,7 @@ class TracksController < ApplicationController
     # binding.pry
     @track.parse_id3(@track)
     respond_to do |format|
-      binding.pry
+      # binding.pry
       if @track.save
         format.html { redirect_to @track, notice: 'Track was successfully created.' }
         format.json { render json: @track, status: :created, location: @track }

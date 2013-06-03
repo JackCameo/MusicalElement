@@ -2,15 +2,29 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Track #</th>
+    <th>Artist</th>
+    <th>Title</th>
+    <th>Album Artist</th>
+    <th>Year</th>
+    <th>Genre</th>
+    <th>Length</th>
+    <th>Size</th>
+    <th>BPM</th>
+    <th>Path</th>
   </tr>
 
 <% @tracks.each do |track| %>
   <tr>
-    <td><%= track.name %></td>
+    <td><%= track.track_number %></td>
+    <td><%= track.artist %></td>
     <td><%= track.title %></td>
+    <td><%= track.album_artist %></td>
+    <td><%= track.year %></td>
+    <td><%= track.genre %></td>
+    <td><%= track.length %></td>
+    <td><%= track.size %></td>
+    <td><%= track.bpm %></td>
     <td><%= track.tpath %></td>
     <td><%= link_to 'Show', track %></td>
     <td><%= link_to 'Edit', edit_track_path(track) %></td>
