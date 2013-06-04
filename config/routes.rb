@@ -1,8 +1,15 @@
 MusicalElement::Application.routes.draw do
 
+  devise_for :users
+  resources :libraries
+
   root :to => 'tracks#index'
 
   resources :tracks 
+
+  
+
+  # match '/libraries' => 'libraries#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
