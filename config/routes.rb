@@ -1,12 +1,14 @@
 MusicalElement::Application.routes.draw do
 
   devise_for :users
-  resources :libraries
+  resources :libraries do
+    resources :tracks 
+  end
   resources :playlists
 
   root :to => 'tracks#index'
 
-  resources :tracks 
+  
 
   
 
