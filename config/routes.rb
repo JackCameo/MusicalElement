@@ -2,6 +2,7 @@ MusicalElement::Application.routes.draw do
 
   devise_for :users
   resources :libraries
+  resources :playlists
 
   root :to => 'tracks#index'
 
