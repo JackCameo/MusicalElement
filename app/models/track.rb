@@ -5,9 +5,10 @@ class Track < ActiveRecord::Base
   
   mount_uploader :tpath, TpathUploader
 
-  # def initialize(data)
-  #   # binding.pry
-  # end
+  belongs_to :users
+  belongs_to :libraries
+
+
 
   def parse_id3(data)
     x = "public"+tpath.to_s
