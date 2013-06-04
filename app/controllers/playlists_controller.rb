@@ -1,11 +1,14 @@
 class PlaylistsController < ApplicationController
-  
+
   def index
   end
 
   def show
   end
 
+  def index
+  end
+  
   def edit
   end
 
@@ -14,4 +17,5 @@ class PlaylistsController < ApplicationController
 
   def destroy
   end
+
 end

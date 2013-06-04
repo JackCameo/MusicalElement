@@ -6,5 +6,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :age, :name
   
-  has_many :trakks
+  has_many :tracks
+  has_many :user_playlists
+  has_many :playlists, :through => :user_playlists
 end

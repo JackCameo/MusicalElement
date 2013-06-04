@@ -5,8 +5,8 @@ class Track < ActiveRecord::Base
   
   mount_uploader :tpath, TpathUploader
 
-  belongs_to :users
-  belongs_to :libraries
+  belongs_to :user
+  belongs_to :library
 
 
 
