@@ -6,11 +6,13 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'devise'
+gem "devise", "~> 2.2.4"
 gem 'carrierwave'
 gem 'taglib-ruby'
 gem 'pry'
 gem 'ruby-mp3info'
+# gem "cucumber-rails"
+# gem 'database_cleaner'
 
 
 # Gems used only for assets and not required

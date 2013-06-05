@@ -128,7 +128,7 @@ PLATFORMS
 DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
-  devise
+  devise (~> 2.2.4)
   jquery-rails
   pg
   pry
