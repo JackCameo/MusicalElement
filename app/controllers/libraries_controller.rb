@@ -10,7 +10,8 @@ class LibrariesController < ApplicationController
   end
 
   def index
-    @libraries = Library.all
+    @library = Library.all
+    @tracks = @library.track
 
     respond_to do |format|
       format.html # index.html.erb

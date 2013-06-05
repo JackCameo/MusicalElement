@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  before_filter :load_library
 
     def index
     @tracks = Track.all
@@ -22,14 +23,15 @@ class TracksController < ApplicationController
     # @@trackdata
     # binding.pry
     @track = Track.new(params[:track])
+    @track.library = @library
     # @track.parse_id3
     # binding.pry
     @track.parse_id3(@track)
     respond_to do |format|
       # binding.pry
       if @track.save
-        format.html { redirect_to @track, notice: 'Track was successfully created.' }
-        format.json { render json: @track, status: :created, location: @track }
+        format.html { redirect_to library_track_path(@library, @track), notice: 'Track was successfully created.' }
+        format.json { render json: @library_track, status: :created, location: @track }
       else
         format.html { render action: "new" }
         format.json { render json: @track.errors, status: :unprocessable_entity }
@@ -54,6 +56,12 @@ class TracksController < ApplicationController
       format.html { redirect_to tracks_url }
       format.json { head :no_content }
     end
+  end
+
+  protected
+  def load_library
+    # binding.pry
+    @library = Library.find(params[:library_id])
   end
 
 end
