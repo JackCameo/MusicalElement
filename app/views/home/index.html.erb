@@ -17,7 +17,7 @@
 
         <section class="top-bar-section">
           <ul class="left">
-            <li><a href="#"><%= link_to 'My Tracks', library_tracks_path, :method => :get %></a></li>
+            <li><a href="#"><%= link_to 'My Tracks', library_tracks_path(current_user.library), :method => :get %></a></li>
             <li><a href="#">Link 2</a></li>
           </ul>
 
