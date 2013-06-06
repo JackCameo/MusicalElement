@@ -10,8 +10,8 @@ class LibrariesController < ApplicationController
   end
 
   def index
-    @library = Library.all
-    @tracks = @library.track
+    @libraries = Library.all
+    # @tracks = @library.track
 
     respond_to do |format|
       format.html # index.html.erb
@@ -34,7 +34,6 @@ class LibrariesController < ApplicationController
   def create
     @library = Library.new(params[:library])
     respond_to do |format|
-      # binding.pry
       if @library.save
         format.html { redirect_to @library, notice: 'Library was successfully created.' }
         format.json { render json: @library, status: :created, location: @library }

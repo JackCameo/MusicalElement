@@ -6,13 +6,15 @@ class Track < ActiveRecord::Base
   mount_uploader :tpath, TpathUploader
 
   belongs_to :user
-  belongs_to :library
+  # belongs_to :library
+  has_many :libraries, :through => :track_library
+  has_many :track_library
 
 
 
   def parse_id3(data)
     x = "public"+tpath.to_s
-    # binding.pry
+    binding.pry
     Mp3Info.open(x) do |f|
     # TagLib::MPEG::File.open(x) do |f|
     # binding.pry
