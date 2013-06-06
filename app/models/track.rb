@@ -14,7 +14,7 @@ class Track < ActiveRecord::Base
 
   def parse_id3(data)
     x = "public"+tpath.to_s
-    binding.pry
+    # binding.pry
     Mp3Info.open(x) do |f|
     # TagLib::MPEG::File.open(x) do |f|
     # binding.pry

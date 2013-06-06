@@ -23,7 +23,7 @@ class TracksController < ApplicationController
     # @@trackdata
     # binding.pry
     @track = Track.new(params[:track])
-    @track.library = @library
+    # @track.library = @library
     # @track.parse_id3
     # binding.pry
     @track.parse_id3(@track)
@@ -53,7 +53,7 @@ class TracksController < ApplicationController
     @track.destroy
 
     respond_to do |format|
-      format.html { redirect_to tracks_url }
+      format.html { redirect_to library_tracks_url }
       format.json { head :no_content }
     end
   end
