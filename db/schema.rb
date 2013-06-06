@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606102743) do
+ActiveRecord::Schema.define(:version => 20130606205003) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(:version => 20130606102743) do
     t.integer  "track_id"
   end
 
+  create_table "library_playlists", :force => true do |t|
+    t.integer  "library_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "playlists", :force => true do |t|
     t.string   "name"
     t.integer  "track_id"
@@ -66,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20130606102743) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.boolean  "private",    :default => true
+    t.integer  "library_id"
   end
 
   create_table "track_libraries", :force => true do |t|

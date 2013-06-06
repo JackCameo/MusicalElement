@@ -4,5 +4,7 @@ class Library < ActiveRecord::Base
   belongs_to :user
   has_many :tracks, :through => :track_library
   has_many :track_library
+  has_many :library_playlist
+  has_many :playlists, :through => :library_playlist
 
 end

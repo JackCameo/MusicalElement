@@ -11,6 +11,8 @@ gem 'carrierwave'
 gem 'taglib-ruby'
 gem 'pry'
 gem 'ruby-mp3info'
+gem 'mysql2'
+gem 'thinking-sphinx', '3.0.3'
 
 
 

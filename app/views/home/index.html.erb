@@ -20,9 +20,14 @@
             <% if user_signed_in? %>
 
             <li><a href="#"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
-            <li><a href="#"><%= link_to 'My Tracks', library_tracks_path(current_user.library), :method => :get %></a></li>
-            <% else %>
-            <li><a href="#"><%= link_to('Login', new_user_session_path)  %></a></li>
+              <% if current_user.library != nil %>
+                <li><a href="#"><%= link_to 'Manage Library', library_tracks_path(current_user.library), :method => :get %></a></li>
+                  <% else %>
+                  <li><a href="#"><%= link_to 'Add Library', new_library_path %></a></li>
+              <% end %>
+              <% else %>
+              <li><a href="#"><%= link_to('Login', new_user_session_path)  %></a></li>
+              
             <% end %>
             <li><a href="#">Link 2</a></li>
           </ul>
