@@ -1,5 +1,7 @@
+
 <%#= binding.pry %>
 <%= form_for(@track, :url => library_tracks_path(@library) , :html => {:multipart => true, :remote => :true}) do |f| %>
+
   <% if @track.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>

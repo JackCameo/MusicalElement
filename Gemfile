@@ -6,11 +6,13 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'devise'
+gem "devise", "~> 2.2.4"
 gem 'carrierwave'
 gem 'taglib-ruby'
 gem 'pry'
 gem 'ruby-mp3info'
+# gem "cucumber-rails"
+# gem 'database_cleaner'
 
 
 # Gems used only for assets and not required
@@ -18,12 +20,13 @@ gem 'ruby-mp3info'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'zurb-foundation', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'zurb-foundation', '~> 4.0.0'
+
 end
 
 gem 'jquery-rails'

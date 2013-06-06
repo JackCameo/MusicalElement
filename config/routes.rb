@@ -8,11 +8,10 @@ MusicalElement::Application.routes.draw do
   
   resources :playlists
 
-  root :to => 'tracks#index'
+  root :to => 'home#index'
 
-  
+  resources :tracks
 
-  
 
   # match '/libraries' => 'libraries#index'
   # The priority is based upon order of creation:
