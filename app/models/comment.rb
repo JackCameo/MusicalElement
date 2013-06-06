@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :body
+  attr_accessible :body, :playlist_id, :user_id
 
-  belongs_to :playlist, :user
+  belongs_to :playlist
+  belongs_to :user
 end

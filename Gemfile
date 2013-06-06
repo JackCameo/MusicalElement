@@ -11,8 +11,7 @@ gem 'carrierwave'
 gem 'taglib-ruby'
 gem 'pry'
 gem 'ruby-mp3info'
-# gem "cucumber-rails"
-# gem 'database_cleaner'
+
 
 
 # Gems used only for assets and not required
