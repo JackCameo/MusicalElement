@@ -1,7 +1,7 @@
 require 'taglib'
 require "mp3info"
 class Track < ActiveRecord::Base
-  attr_accessible :name, :title, :tpath, :track_number, :artist, :album_artist, :year, :genre, :bpm, :length, :size
+  attr_accessible :name, :title, :tpath, :track_number, :artist, :album_artist, :year, :genre, :bpm, :length, :size, :user_id
   
   mount_uploader :tpath, TpathUploader
 

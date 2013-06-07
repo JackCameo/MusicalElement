@@ -10,7 +10,8 @@ class LibrariesController < ApplicationController
   end
 
   def index
-    @libraries = Library.all
+    # binding.pry
+    @library = Library.find(current_user)
     # @tracks = @library.track
 
     respond_to do |format|

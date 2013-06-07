@@ -1,14 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b>Library Name:</b>
   <%= @library.name %>
 </p>
 
 <p>
-  <b>Track path:</b>
+  <b>Library Image:</b>
   <%= @library.image %>
+  <img src="<%= @library.image %>" />
+  
 </p>
 
+<div class="large-4 columns hide-for-small">
+
+            <h4>Get In Touch!</h4><hr/>
+
+            <a class="small button" href="<%= library_tracks_path(current_user.library) %>">
+              View Tracks
+            </a>
+
+            <a class="small button" href="<%= library_playlists_path(current_user.library) %>">
+              View Playlists
+            </a>
+
+
+          </div>
+
 <%= link_to 'Edit', edit_library_path(@library) %> |
-<%= link_to 'Back', libraries_path %>
+<%= link_to 'Back', root_path %>

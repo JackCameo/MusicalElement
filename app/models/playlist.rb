@@ -6,5 +6,10 @@ class Playlist < ActiveRecord::Base
   has_many :comments
   has_many :users, :through => :user_playlists
 
+  def included
+
+    binding.pry
+  end
+
 
 end

@@ -30,6 +30,11 @@ class TracksController < ApplicationController
     respond_to do |format|
       # binding.pry
       if @track.save
+        # binding.pry
+        @tracklibrary = TrackLibrary.new
+        @tracklibrary.track_id = @track.id
+        @tracklibrary.library_id = @library.id
+        @tracklibrary.save
         format.html { redirect_to library_track_path(@library, @track), notice: 'Track was successfully created.' }
         format.json { render json: @library_track, status: :created, location: @track }
       else
