@@ -13,8 +13,8 @@
   <% end %>
 
   <% f.fields_for @tracks do |track| %>
-    <%= track.check_box :show %>
-    <%= track.label :show, "Add Song" %>
+    <%= track.check_box :destroy %>
+    <%= track.label :destroy, "Add Song" %>
     <% end %>
 
 <!--   <div class="field">
