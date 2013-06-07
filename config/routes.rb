@@ -6,6 +6,7 @@ MusicalElement::Application.routes.draw do
 
   resources :libraries do
     resources :tracks
+    resources :playlists
   end
   resources :users do |user|
     resources :friends

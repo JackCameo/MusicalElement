@@ -1,7 +1,7 @@
 class FriendsController < ApplicationController
 
   class FriendsController
-    before_filter :login_required, :except => [:index, :show]
+    # before_filter :login_required, :except => [:index, :show]
     def index
       @user = User.find(params[:user_id])
     end
