@@ -8,8 +8,8 @@ class Track < ActiveRecord::Base
   belongs_to :user
   belongs_to :artist
   # belongs_to :library
-  has_many :libraries, :through => :track_library
-  has_many :track_library
+  has_many :libraries, :through => :track_libraries
+  has_many :track_libraries
 
 
 

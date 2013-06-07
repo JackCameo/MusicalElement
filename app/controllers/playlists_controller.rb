@@ -12,7 +12,7 @@ class PlaylistsController < ApplicationController
   def new
     # binding.pry
     @playlist = Playlist.new
-    @tracks = current_user.library.tracks
+    # @tracks = current_user.library.tracks
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @playlist }
@@ -34,6 +34,7 @@ class PlaylistsController < ApplicationController
   protected
   def load_library
     # binding.pry
+    @tracks = current_user.library.tracks
     @library = Library.find(params[:library_id])
   end
 
