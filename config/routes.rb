@@ -1,11 +1,16 @@
 MusicalElement::Application.routes.draw do
 
+  get "users/add"
+
   devise_for :users
 
   resources :libraries do
-    resources :tracks 
+    resources :tracks
   end
-  
+  resources :users do |user|
+    resources :friends
+end
+
   resources :playlists
 
   root :to => 'home#index'
