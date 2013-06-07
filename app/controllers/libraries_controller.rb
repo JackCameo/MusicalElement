@@ -1,7 +1,8 @@
 class LibrariesController < ApplicationController
 
   def new
-        @library = Library.new
+    # binding.pry
+        @library = Library.new#(current_user.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,6 +34,7 @@ class LibrariesController < ApplicationController
   end
 
   def create
+    binding.pry
     @library = Library.new(params[:library])
     respond_to do |format|
       if @library.save

@@ -2,7 +2,7 @@ class TracksController < ApplicationController
   before_filter :load_library
 
     def index
-    @tracks = Track.all
+    @tracks = current_user.library.tracks
 
     respond_to do |format|
       format.html # index.html.erb
