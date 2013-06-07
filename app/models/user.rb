@@ -20,4 +20,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :user_playlists
   has_many :playlists, :through => :user_playlists
+  has_many :friendships
+  has_many :friends, :through => :friendships, :class_name => "User"
 end

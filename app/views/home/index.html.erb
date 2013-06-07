@@ -17,13 +17,30 @@
 
         <section class="top-bar-section">
           <ul class="left">
-            <% if user_signed_in? %>
+            <% if user_signed_in? && current_user.library = nil %>
 
-            <li><a href="#"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
-            <li><a href="#"><%= link_to 'My Tracks', library_tracks_path(current_user.library), :method => :get %></a></li>
+            <li>
+
+              <a href="#"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a>
+            </li>
+
+            <li>
+              <a href="#"><%= link_to 'Manage', library_tracks_path(current_user.library), :method => :get %></a>
+            </li>
+
+            <% elsif user_signed_in? && current_user.library != nil%>
+
+            <li>
+              <a href="#"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a>
+            </li>
+
+              <li>
+                <a href="#"><%= link_to 'Add Library', new_library_path %></a>
+              </li>
             <% else %>
             <li><a href="#"><%= link_to('Login', new_user_session_path)  %></a></li>
             <% end %>
+
             <li><a href="#">Link 2</a></li>
           </ul>
 
