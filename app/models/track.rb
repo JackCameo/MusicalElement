@@ -1,18 +1,22 @@
 require 'taglib'
 require "mp3info"
 class Track < ActiveRecord::Base
-  attr_accessible :name, :title, :tpath, :track_number, :artist, :album_artist, :year, :genre, :bpm, :length, :size, :user_id
+  attr_accessible :name, :title, :tpath, :track_number, :artist, :album_artist, :year, :genre, :bpm, :length, :size, :user_id, :artists_attrubutes
   
   mount_uploader :tpath, TpathUploader
 
   belongs_to :user
-  belongs_to :playlist
-  belongs_to :artist
+  # belongs_to :playlist
+  # belongs_to :artist
   # belongs_to :library
   has_many :libraries, :through => :track_libraries
   has_many :track_libraries
   has_many :playlists, :through => :playlist_tracks
   has_many :playlist_tracks
+  has_many :artists, :through => :artist_tracks
+  has_many :artist_tracks
+
+  accepts_nested_attributes_for :artists
 
 
 
@@ -37,6 +41,8 @@ class Track < ActiveRecord::Base
     data[:length] = f.length.to_i
     data[:size] = x.size * 1024
     # # binding.pry
+    data[:artist] = data[:artist].split("/")
+    data[:artist] = {:name => data[:artist]}
     # # Access all frames
     # tag.frame_list.size
 
@@ -51,5 +57,14 @@ class Track < ActiveRecord::Base
     # binding.pry
   end
 end
+
+  # def parse_artist(artist)
+  #   @artist = artist.split("/")
+  #   @artist.each do |a|
+  #   binding.pry
+  
+
+  # end
+
 
 end

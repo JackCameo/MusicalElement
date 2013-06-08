@@ -26,6 +26,14 @@ class PlaylistsController < ApplicationController
   end
 
   def create
+    @playlist = Playlist.new(params[:playlist])
+    if @playlist.save
+      format.html { redirect_to playlist_track_path(@playlist, @playlist), notice: 'Track was successfully created.' }
+      format.json { render json: @playlist_track, status: :created, location: @playlist }
+    else
+      format.html { render action: "new" }
+      format.json { render json: @playlist.errors, status: :unprocessable_entity }
+    end
   end
 
   def destroy
@@ -34,8 +42,8 @@ class PlaylistsController < ApplicationController
   protected
   def load_library
     # binding.pry
-    @tracks = current_user.library.tracks
     @library = Library.find(params[:library_id])
+    @tracks = current_user.library.tracks
   end
 
 end

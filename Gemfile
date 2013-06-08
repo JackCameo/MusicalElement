@@ -10,6 +10,7 @@ gem "devise", "~> 2.2.4"
 gem 'carrierwave'
 gem 'taglib-ruby'
 gem 'pry'
+gem 'pry-debugger'
 gem 'ruby-mp3info'
 gem 'mysql2'
 gem 'thinking-sphinx', '~> 3.0.3'

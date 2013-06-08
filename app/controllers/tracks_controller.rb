@@ -23,6 +23,8 @@ class TracksController < ApplicationController
     @track = Track.new(params[:track])
     @track.libraries << @library
     @track.parse_id3(@track)
+    @track.update_attributes(params[:track])
+    binding.pry
     respond_to do |format|
       if @track.save
         format.html { redirect_to library_track_path(@library, @track), notice: 'Track was successfully created.' }

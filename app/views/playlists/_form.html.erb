@@ -1,3 +1,4 @@
+<%# binding.pry %>
 <%= form_for(@playlist, :url => library_playlists_path(@library) , :html => {:multipart => true, :remote => :true}) do |f| %>
 
   <% if @playlist.errors.any? %>
@@ -12,10 +13,10 @@
     </div>
   <% end %>
 
-  <% f.fields_for @tracks do |track| %>
-    <%= track.check_box :tracks %>
-    <%= track.label :tracks, "Add Song" %>
-    <% end %>
+  <%# f.fields_for @tracks do |track| %>
+    <%#= track.check_box :track %>
+    <%#= track.label :track, "Add Song" %>
+    <%# end %>
 
 <!--   <div class="field">
     <%#= f.label :name %><br />
@@ -43,5 +44,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<div class="map">
+  <%= render :partial => 'tracks', :locals => {:track => @tracks} %>
+</div>
 
 :position, :track_id, :user_id, :library_id

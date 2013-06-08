@@ -1,5 +1,6 @@
 class Playlist < ActiveRecord::Base
   attr_accessible :name, :position, :user_id, :library_id, :private
+  attr_accessible :tracks_attributes
 
   belongs_to :library
   has_many :user_playlists 
@@ -8,8 +9,10 @@ class Playlist < ActiveRecord::Base
   has_many :playlist_tracks
   has_many :users, :through => :user_playlists
 
-  def included
+  accepts_nested_attributes_for :tracks
+  
 
+  def included
     binding.pry
   end
 
