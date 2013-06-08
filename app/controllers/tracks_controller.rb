@@ -20,21 +20,11 @@ class TracksController < ApplicationController
   end
 
   def create
-    # @@trackdata
-    # binding.pry
     @track = Track.new(params[:track])
-    # @track.library = @library
-    # @track.parse_id3
-    # binding.pry
+    @track.libraries << @library
     @track.parse_id3(@track)
     respond_to do |format|
-      # binding.pry
       if @track.save
-        # binding.pry
-        @tracklibrary = TrackLibrary.new
-        @tracklibrary.track_id = @track.id
-        @tracklibrary.library_id = @library.id
-        @tracklibrary.save
         format.html { redirect_to library_track_path(@library, @track), notice: 'Track was successfully created.' }
         format.json { render json: @library_track, status: :created, location: @track }
       else
@@ -65,7 +55,6 @@ class TracksController < ApplicationController
 
   protected
   def load_library
-    # binding.pry
     @library = Library.find(params[:library_id])
   end
 
