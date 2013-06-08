@@ -58,11 +58,7 @@ GEM
     middleware (0.1.0)
     mime-types (1.23)
     multi_json (1.7.4)
-<<<<<<< HEAD
     mysql2 (0.3.11)
-=======
-    mysql2 (0.3.12b5)
->>>>>>> Joe
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -136,21 +132,13 @@ DEPENDENCIES
   carrierwave
   devise (~> 2.2.4)
   jquery-rails
-<<<<<<< HEAD
   mysql2
-=======
-  mysql2 (= 0.3.12b5)
->>>>>>> Joe
   pg
   pry
   rails (= 3.2.13)
   ruby-mp3info
   sass-rails (~> 3.2.3)
   taglib-ruby
-<<<<<<< HEAD
-  thinking-sphinx (= 3.0.3)
-=======
   thinking-sphinx (~> 3.0.3)
->>>>>>> Joe
   uglifier (>= 1.0.3)
   zurb-foundation (~> 4.0.0)

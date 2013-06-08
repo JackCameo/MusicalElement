@@ -6,10 +6,13 @@ class Track < ActiveRecord::Base
   mount_uploader :tpath, TpathUploader
 
   belongs_to :user
+  belongs_to :playlist
   belongs_to :artist
   # belongs_to :library
   has_many :libraries, :through => :track_libraries
   has_many :track_libraries
+  has_many :playlists, :through => :playlist_tracks
+  has_many :playlist_tracks
 
 
 
