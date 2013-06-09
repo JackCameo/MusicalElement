@@ -3,7 +3,7 @@
 <ul>
   <% for friendship in @user.friendships %>
     <li>
-      <%= image_tag @user.avatar(:thumb) %>
+      <%= image_tag friendship.friend.avatar(:thumb) %>
       <%=friendship.friend.email %>
       (<%= link_to "remove", friendship, :method => :delete %>)
 
@@ -20,7 +20,7 @@
 <ul>
   <% for user in @user.inverse_friends %>
     <li>
-      <%= image_tag @user.avatar(:thumb) %>
+      <%= image_tag user.avatar(:thumb) %>
       <%= user.email %>
 
 
