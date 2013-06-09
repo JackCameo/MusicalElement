@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20130609201823) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "status"
   end
 
   create_table "libraries", :force => true do |t|
@@ -154,6 +155,11 @@ ActiveRecord::Schema.define(:version => 20130609201823) do
     t.integer  "age"
     t.string   "avatar"
     t.integer  "library_id"
+    t.string   "image_url"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

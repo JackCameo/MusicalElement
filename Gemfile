@@ -14,6 +14,8 @@ gem 'pry-debugger'
 gem 'ruby-mp3info'
 gem 'mysql2'
 gem 'thinking-sphinx', '~> 3.0.3'
+gem "paperclip", "~> 3.0"
+gem 'carrierwave'
 
 
 
