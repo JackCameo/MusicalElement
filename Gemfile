@@ -10,11 +10,13 @@ gem "devise", "~> 2.2.4"
 gem 'carrierwave'
 gem 'taglib-ruby'
 gem 'pry'
+gem 'pry-debugger'
 gem 'ruby-mp3info'
+gem 'mysql2'
 gem 'thinking-sphinx', '~> 3.0.3'
-gem 'mysql2', '0.3.12b5'
 gem "paperclip", "~> 3.0"
 gem 'carrierwave'
+
 
 
 
@@ -22,7 +24,7 @@ gem 'carrierwave'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  # gem 'coffee-rails', '~> 3.2.1'
   gem 'zurb-foundation', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

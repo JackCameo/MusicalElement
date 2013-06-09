@@ -18,9 +18,17 @@
     <%#= f.label :name %><br />
     <%#= f.text_field :name %>
   </div> -->
-<!--   <div class="field">
-      <%#= f.hidden_field :library_id %>
-  </div> -->
+  <%#= f.fields_for :artist do |builder| %>
+   
+    <div class="field">
+      <%#= builder.label :artist %><br />
+      <%#= builder.hidden_field :artist %>
+    </div>
+  <%# end -%>
+
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
 
   <div class="field">
     <%= f.label :tpath %><br />

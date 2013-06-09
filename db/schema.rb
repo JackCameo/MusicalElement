@@ -11,18 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607143644) do
+ActiveRecord::Schema.define(:version => 20130609201823) do
+
+  create_table "album_artists", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "artist_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.string   "image_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   create_table "albums_tracks", :force => true do |t|
     t.integer  "album_id"
     t.integer  "track_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "artist_tracks", :force => true do |t|
+    t.integer  "artist_id"
+    t.integer  "track_id"
+    t.integer  "album_artist"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "artists", :force => true do |t|
+    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "age"
+    t.date     "birthdate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -52,21 +78,34 @@ ActiveRecord::Schema.define(:version => 20130607143644) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "image"
-    t.integer  "trakc_id"
     t.integer  "album_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "track_id"
   end
 
+  create_table "library_playlists", :force => true do |t|
+    t.integer  "library_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "playlist_tracks", :force => true do |t|
+    t.integer  "playlist_id"
+    t.integer  "track_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "playlists", :force => true do |t|
     t.string   "name"
-    t.integer  "track_id"
     t.integer  "user_id"
     t.integer  "position"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.boolean  "private",    :default => true
+    t.integer  "library_id"
   end
 
   create_table "track_libraries", :force => true do |t|
@@ -77,13 +116,11 @@ ActiveRecord::Schema.define(:version => 20130607143644) do
   end
 
   create_table "tracks", :force => true do |t|
-    t.integer  "name"
     t.string   "title"
     t.string   "tpath"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "track_number"
-    t.string   "artist"
     t.string   "album_artist"
     t.integer  "year"
     t.string   "genre"
@@ -91,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20130607143644) do
     t.integer  "length"
     t.string   "size"
     t.integer  "user_id"
+    t.string   "name"
   end
 
   create_table "user_playlists", :force => true do |t|

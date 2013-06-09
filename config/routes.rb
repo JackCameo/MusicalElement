@@ -5,13 +5,13 @@ MusicalElement::Application.routes.draw do
   devise_for :users
 
   resources :libraries do
-    resources :tracks
+    resources :tracks 
     resources :playlists
   end
-resources :users
-resources :friendships
+  resources :users
+  resources :friendships
 
-resources :playlists
+  resources :playlists
 
   root :to => 'home#index'
 
