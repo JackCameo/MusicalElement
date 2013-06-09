@@ -8,11 +8,10 @@ MusicalElement::Application.routes.draw do
     resources :tracks
     resources :playlists
   end
-  resources :users do |user|
-    resources :friends
-end
+resources :users
+resources :friendships
 
-  resources :playlists
+resources :playlists
 
   root :to => 'home#index'
 

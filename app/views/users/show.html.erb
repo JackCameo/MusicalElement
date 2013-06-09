@@ -1,7 +1,30 @@
-<% if user_signed_in? %>
-<% unless @user == current_user || current_user.requested_friends.include?(@user) || current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-<% form_for(:friendship, :url => user_friends_path(:user_id => current_user.id, :friend_id => @user.id)) do |f| %>
-<%= submit_tag "Add to My Friends" %>
-<% end %>
-<% end %>
-<% end %>
+<div class="friends">
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li>
+      <%= image_tag @user.avatar(:thumb) %>
+      <%=friendship.friend.email %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+
+
+    </li>
+  <% end %>
+</ul>
+</div>
+<div class="friended">
+
+<p><%= link_to "Find Friends", users_path %></p>
+
+<h2>Friended by Users</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+    <li>
+      <%= image_tag @user.avatar(:thumb) %>
+      <%= user.email %>
+
+
+    </li>
+  <% end %>
+</ul>
+</div>

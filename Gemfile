@@ -13,6 +13,8 @@ gem 'pry'
 gem 'ruby-mp3info'
 gem 'thinking-sphinx', '~> 3.0.3'
 gem 'mysql2', '0.3.12b5'
+gem "paperclip", "~> 3.0"
+gem 'carrierwave'
 
 
 
