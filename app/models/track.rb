@@ -68,7 +68,9 @@ end
       @y << x
     end
     track[:name] = {}
-    track[:name] = {:artists=>@y}
+    # track[:name] = {:artists=>@y}
+    track[:artists_attributes] = @y
+    # binding.pry
   end
 
 end
