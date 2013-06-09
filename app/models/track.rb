@@ -1,7 +1,7 @@
 require 'taglib'
 require "mp3info"
 class Track < ActiveRecord::Base
-  attr_accessible :name, :title, :tpath, :track_number, :artist, :album_artist, :year, :genre, :bpm, :length, :size, :user_id, :artists_attributes
+  attr_accessible :name, :title, :tpath, :track_number, :album_artist, :year, :genre, :bpm, :length, :size, :user_id, :artists_attributes
   
   mount_uploader :tpath, TpathUploader
 
@@ -15,6 +15,7 @@ class Track < ActiveRecord::Base
   has_many :playlist_tracks
   has_many :artists, :through => :artist_tracks
   has_many :artist_tracks
+  # before_create :build_artists
 
   accepts_nested_attributes_for :artists
 
@@ -33,7 +34,7 @@ class Track < ActiveRecord::Base
     # Read basic attributes
     data[:title] = f.tag2["TIT2"]
     data[:bpm] = f.tag2["TBPM"]
-    data[:artists_attributes] = f.tag2["TPE1"]
+    data[:name] = f.tag2["TPE1"]
     data[:album_artist] = f.tag2["TPE2"]
     data[:year] = f.tag2["TYER"]
     data[:track_number] = f.tag2["TRCK"]
@@ -41,7 +42,7 @@ class Track < ActiveRecord::Base
     data[:length] = f.length.to_i
     data[:size] = x.size * 1024
     # binding.pry
-    data[:artists_attributes] = data[:artists_attributes].split("/")
+    data[:name] = data[:name].split("/")
     # data[:artist] = {:name => data[:artist]}
     # # Access all frames
     # tag.frame_list.size
@@ -61,13 +62,13 @@ end
 
   def parse_artist(track)
     @y = []
-    track.artists_attributes.each do |artist|
+    track.name.each do |artist|
       x = {}      
       x[:name] = artist
       @y << x
     end
-    track[:artists_attributes] = {}
-    track[:artists_attributes] = {:artist=>@y}
+    track[:name] = {}
+    track[:name] = {:artists=>@y}
   end
 
 end
