@@ -1,7 +1,7 @@
 require 'taglib'
 require "mp3info"
 class Track < ActiveRecord::Base
-  attr_accessible :name, :title, :tpath, :track_number, :artist, :album_artist, :year, :genre, :bpm, :length, :size, :user_id, :artists_attrubutes
+  attr_accessible :name, :title, :tpath, :track_number, :artist, :album_artist, :year, :genre, :bpm, :length, :size, :user_id, :artists_attributes
   
   mount_uploader :tpath, TpathUploader
 
@@ -33,16 +33,16 @@ class Track < ActiveRecord::Base
     # Read basic attributes
     data[:title] = f.tag2["TIT2"]
     data[:bpm] = f.tag2["TBPM"]
-    data[:artist] = f.tag2["TPE1"]
+    data[:artists_attributes] = f.tag2["TPE1"]
     data[:album_artist] = f.tag2["TPE2"]
     data[:year] = f.tag2["TYER"]
     data[:track_number] = f.tag2["TRCK"]
     data[:genre] = f.tag2["TCON"]
     data[:length] = f.length.to_i
     data[:size] = x.size * 1024
-    # # binding.pry
-    data[:artist] = data[:artist].split("/")
-    data[:artist] = {:name => data[:artist]}
+    # binding.pry
+    data[:artists_attributes] = data[:artists_attributes].split("/")
+    # data[:artist] = {:name => data[:artist]}
     # # Access all frames
     # tag.frame_list.size
 
@@ -54,17 +54,20 @@ class Track < ActiveRecord::Base
     # cover = tag.frame_list('APIC').first
     # cover.mime_type
     # cover.picture
+    self.parse_artist(data)
     # binding.pry
   end
 end
 
-  # def parse_artist(artist)
-  #   @artist = artist.split("/")
-  #   @artist.each do |a|
-  #   binding.pry
-  
-
-  # end
-
+  def parse_artist(track)
+    @y = []
+    track.artists_attributes.each do |artist|
+      x = {}      
+      x[:name] = artist
+      @y << x
+    end
+    track[:artists_attributes] = {}
+    track[:artists_attributes] = {:artist=>@y}
+  end
 
 end

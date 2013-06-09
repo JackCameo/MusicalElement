@@ -12,7 +12,7 @@ class TracksController < ApplicationController
 
   def new
     @track = Track.new
-
+    # @artist = Artist.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @track }
@@ -21,10 +21,13 @@ class TracksController < ApplicationController
 
   def create
     @track = Track.new(params[:track])
+    @track.save
     @track.libraries << @library
     @track.parse_id3(@track)
-    @track.update_attributes(params[:track])
-    binding.pry
+    # binding.pry
+    @track.update_attributes(@track[:artists_attributes])
+    # @artist = Artist.new(@track[:artists_attributes])
+    # binding.pry
     respond_to do |format|
       if @track.save
         format.html { redirect_to library_track_path(@library, @track), notice: 'Track was successfully created.' }
