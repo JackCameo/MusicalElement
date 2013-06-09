@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]> <html class="ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]> <html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
@@ -15,7 +15,7 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
@@ -30,7 +30,7 @@
             <li class="name">
 
               <h1>
-                <a href="<%=root_path %>">
+                <a href="<%= root_path %>">
                   Musical Element
                 </a>
               </h1>
@@ -39,40 +39,48 @@
           </ul>
 
 
-            <section class="top-bar-section">
+          <section class="top-bar-section">
+
             <ul class="left">
               <% if user_signed_in? %>
-              <li><a href="#"><%= link_to "Friends", users_path, :method => :get %></a></li>
+
+
               <li><a href="#"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
                 <% if current_user.library != nil %>
                   <li><a href="#"><%= link_to 'Music Library', library_path(current_user.library) %></a></li>
                     <% else %>
                     <li><a href="#"><%= link_to 'Add Library', new_library_path %></a></li>
                 <% end %>
+
                 <% else %>
-                <li><a href="#"><%= link_to('Login', new_user_session_path) %></a></li>
-                
+                <li><a href="#"><%= link_to('Login', new_user_session_path)  %></a></li>
+
               <% end %>
+              <li><a href="#"><%= link_to "Friends", users_path, :method => :get %></a></li>
             </ul>
 
+
+
             <ul class="right">
+
               <li class="search">
                 <form>
                   <input type="search">
                 </form>
+
+
               </li>
+
 
               <li class="has-button">
                 <a class="small button" href="#">Search</a>
               </li>
             </ul>
-              <%if signed_in? %>
-               <div class="thumbnail">
+            <%if signed_in? %>
+             <div class="thumbnail">
                 <%= image_tag current_user.avatar(:thumb) %>
-               </div>
+            </div>
             <% else %>
-
-            
             <% end %>
 
 
