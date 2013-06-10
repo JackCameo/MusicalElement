@@ -25,8 +25,10 @@ class TracksController < ApplicationController
     # binding.pry
     @track.libraries << @library
     @track.parse_id3(@track)
-    # binding.pry
+    binding.pry
     @track.update_attributes(:artists_attributes => @track.parse_id3(@track))
+    @track.update_attributes(:album_attributes => @track.parse_id3(@track))
+    @track.update_attributes(:genre_attributes => @track.parse_id3(@track))
     binding.pry
     @artist = Artist.find_or_create_by_name(@track.parse_id3(@track))
     binding.pry

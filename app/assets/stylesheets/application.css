@@ -13,19 +13,4 @@
  */
  *= require foundation_and_overrides
 
-.nav{
-  color:white;
-  margin-left: 70%;
-}
-body{
-  background-image:url('http://images7.alphacoders.com/325/325053.jpg');
-}
-h1{
-  color:white;
-}
 
-.thumbnail img{
-  height:40px;
-  width:30px;
-
-}
