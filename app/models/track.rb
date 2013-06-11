@@ -6,6 +6,12 @@ class Track < ActiveRecord::Base
 
   mount_uploader :tpath, TpathUploader
 
+  define_index do
+    indexes :name
+    indexes :title
+    indexes :bpm
+  end
+
   belongs_to :user
   # belongs_to :playlist
   # belongs_to :artist
@@ -19,7 +25,7 @@ class Track < ActiveRecord::Base
   has_many :playlist_tracks
   has_many :artists, :through => :artist_tracks
   has_many :artist_tracks
-  
+
   # has_one :album_artist, :foreign_key => :artist_id, :primary_key => :artist_id
   # belongs_to :album_artist, :foreign_key => :artist_id, :primary_key => :artist_id
 
@@ -73,7 +79,7 @@ end
   def parse_artist(track)
     @y = []
     track.name.each do |artist|
-      x = {}      
+      x = {}
       x[:name] = artist
       @y << x
     end

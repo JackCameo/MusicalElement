@@ -45,7 +45,7 @@ class TracksController < ApplicationController
     #       @artist << Artist.find_by_name(i[:name])
     #   end
     # end
-    # @artist << Artist.find_by_name(@track[:album_artist])    
+    # @artist << Artist.find_by_name(@track[:album_artist])
     # binding.pry
     # @track.update_attributes(@track[:name])
     # binding.pry

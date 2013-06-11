@@ -1,10 +1,10 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'thinking-sphinx', '~> 3.0.2'
 gem 'pg'
 gem "devise", "~> 2.2.4"
 gem 'carrierwave'
@@ -13,7 +13,6 @@ gem 'pry'
 gem 'pry-debugger'
 gem 'ruby-mp3info'
 gem 'mysql2'
-gem 'thinking-sphinx', '~> 3.0.3'
 gem "paperclip", "~> 3.0"
 gem 'carrierwave'
 gem "better_errors"

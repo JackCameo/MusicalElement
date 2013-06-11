@@ -1,5 +1,7 @@
 MusicalElement::Application.routes.draw do
 
+  get "search/index"
+
   get "users/add"
 
   devise_for :users
