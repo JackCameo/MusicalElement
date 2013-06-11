@@ -1,5 +1,4 @@
-<%# binding.pry %>
-<%= form_for(@playlist, :url => library_playlists_path(@library) , :html => {:multipart => true, :remote => :true}) do |f| %>
+<%= form_for(@playlist, :url => library_playlists_path(@library) , :remote => :true) do |f| %>
 
   <% if @playlist.errors.any? %>
     <div id="error_explanation">
@@ -23,15 +22,14 @@
   </div>
 
 
-    <ol id="sortable">
+    <!-- <ol id="sortable"> -->
       <%# @fruits.each do |fruit| %>
-        <li>
-          <%= render :partial => 'tracks', :locals => {:track => @tracks} %>
+        <!-- <li> -->
+          <%= render :partial => 'tracks', :locals => {:track => @tracks, :f => f} %>
           <%#= render :partial => 'fruits/fruit', :locals => { :fruit => fruit } %>
-        </li>
+        <!-- </li> -->
       <%# end %>
-    </ol>
-  </div>
+    <!-- </ol> -->
 
   <div class="actions">
     <%= f.submit %>

@@ -1,9 +1,19 @@
-<h1>Playlists#index</h1>
-<% @playlists.each do |pl| %>
+<h1>PlayLists</h1>
 
-<td><%= pl.name %></td>
-<% end %>
+  <% @playlists.each do |pl| %>
+  <table>
+    <tr>
+        <th><%= pl.name %></th>
+    </tr>
 
+    <tr>
+      <% pl.tracks.each do |t| %>
+      <tr><td><%= t.title %></td></tr>
+
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
 
 <%= link_to 'Create Playlist', new_library_playlist_path(@library.id) %> | 
 <%= link_to 'Back', library_path(current_user.library) %>

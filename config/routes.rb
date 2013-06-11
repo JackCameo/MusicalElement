@@ -11,7 +11,7 @@ MusicalElement::Application.routes.draw do
   resources :users
   resources :friendships
 
-  resources :playlists
+  # resources :playlists
 
   root :to => 'home#index'
 
