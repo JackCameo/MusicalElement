@@ -1,11 +1,11 @@
-<div id="users">
-<% for user in @users %>
-  <div class="user">
-    <p>
+<div class="users">
+<h1>Users</h1>
+<% @users.each do |user|  %>
+<tr>
+<td><%= image_tag user.avatar(:thumb) %></td>
+<td><%= user.email %>
+<%= link_to "Send Friend Request", friend_request_friendship_path(user) %></td>
 
-     <img src="<%= user.avatar(:thumb) %>"><%= user.email %> <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
-      <div class="clear"></div>
-    </p>
-  </div>
 <% end %>
 </div>
+

@@ -42,7 +42,6 @@
             <ul class="left">
               <% if user_signed_in? %>
 
-
               <li><a href="#"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
               <li><a href="#"><%= link_to 'Friends', users_path, :method => :get %></a></li>
                 <% if current_user.library != nil %>
@@ -68,7 +67,14 @@
                 <a class="small button" href="#">Search</a>
               </li>
             </ul>
+
+             <% unless !user_signed_in? %>
+              <%= image_tag current_user.avatar(:thumb) %>
+             <% end %>
+
+
           </section>
+
         </nav>
 
       <!-- End Navigation -->

@@ -16,6 +16,8 @@ gem 'mysql2'
 gem 'thinking-sphinx', '~> 3.0.3'
 gem "paperclip", "~> 3.0"
 gem 'carrierwave'
+gem "better_errors"
+gem "binding_of_caller"
 
 
 

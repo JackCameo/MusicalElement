@@ -5,11 +5,18 @@ MusicalElement::Application.routes.draw do
   devise_for :users
 
   resources :libraries do
-    resources :tracks 
+    resources :tracks
     resources :playlists
   end
   resources :users
-  resources :friendships
+  resources :friendships do
+    collection do
+      get :accept, :decline, :cancel, :delete
+    end
+    member do
+      get :friend_request
+    end
+  end
 
   resources :playlists
 
