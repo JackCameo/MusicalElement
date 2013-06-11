@@ -25,13 +25,15 @@ class TracksController < ApplicationController
     # binding.pry
     @track.libraries << @library
     @track.parse_id3(@track)
-    binding.pry
-    @track.update_attributes(:artists_attributes => @track.parse_id3(@track))
-    @track.update_attributes(:album_attributes => @track.parse_id3(@track))
-    @track.update_attributes(:genre_attributes => @track.parse_id3(@track))
-    binding.pry
-    @artist = Artist.find_or_create_by_name(@track.parse_id3(@track))
-    binding.pry
+    # binding.pry
+    # @track.update_attributes(:artists_attributes => @track.parse_id3(@track))
+    # @track.build_album.attributes
+    # @track.build_genre.attributes
+    # @track.album.update_attributes(:album_attributes => @track.parse_id3(@track))
+    # @track.genre.update_attributes(:genre_attributes => @track.parse_id3(@track))
+    # binding.pry
+    # @artist = Artist.find_or_create_by_name(@track.parse_id3(@track))
+    # binding.pry
     # @track.update_attributes(@track[:name])
     # @artist = []
     # @track.name[:artists].each do |i|
@@ -53,7 +55,7 @@ class TracksController < ApplicationController
     # binding.pry
     # @artist = @track.artist.build
     # @artist = Artist.new(@track[:artists_attributes])
-    binding.pry
+    # binding.pry
     respond_to do |format|
       if @track.save
         # @artist.each do |a|

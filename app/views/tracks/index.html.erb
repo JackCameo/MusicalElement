@@ -6,7 +6,7 @@
     <th>Track #</th>
     <th>Artist</th>
     <th>Title</th>
-    <th>Album Artist</th>
+    <th>Album</th>
     <th>Year</th>
     <th>Genre</th>
     <th>Length</th>
@@ -18,11 +18,13 @@
 <% @tracks.each do |track| %>
   <tr>
     <td><%= track.track_number %></td>
-    <td><%#= track.artist %></td>
+    <%# binding.pry %>
+    <td><%= track.artists.name %></td>
     <td><%= track.title %></td>
+    <td><%= track.album.name %></td>    
     <td><%#= track.album_artist %></td>
     <td><%= track.year %></td>
-    <td><%#= track.genre %></td>
+    <td><%= track.genre.name %></td>
     <td><%= track.length %></td>
     <td><%= track.size %></td>
 

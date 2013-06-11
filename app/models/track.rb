@@ -2,7 +2,7 @@ require 'taglib'
 require "mp3info"
 class Track < ActiveRecord::Base
   attr_accessible :name, :title, :tpath, :track_number, :year, :bpm, :length, :size, :user_id, :artists_attributes, :album_attributes
-  attr_accessible :genre_attributes, :album_id, :genre_id
+  attr_accessible :genre_attributes, :album_id, :genre_id, :genre, :album, :album_artist, :artists
 
   mount_uploader :tpath, TpathUploader
 
@@ -10,8 +10,8 @@ class Track < ActiveRecord::Base
   # belongs_to :playlist
   # belongs_to :artist
   # belongs_to :library
-  has_one :album
-  has_one :genre
+  belongs_to :album
+  belongs_to :genre
 
   has_many :libraries, :through => :track_libraries
   has_many :track_libraries
@@ -33,54 +33,52 @@ class Track < ActiveRecord::Base
     x = "public"+tpath.to_s
     # binding.pry
     Mp3Info.open(x) do |f|
-    # TagLib::MPEG::File.open(x) do |f|
     # binding.pry
-    # tag = f.id3v2_tag
+    self.title = f.tag2["TIT2"]
+    self.bpm = f.tag2["TBPM"]
+    # self.name = f.tag2["TPE1"]    
+    self.year = f.tag2["TYER"]
+    self.track_number = f.tag2["TRCK"]
+    self.length = f.length.to_i
+    self.size = x.size * 1024
+    # self.name = data[:name].split("/")
     # binding.pry
-    # @trackdata = {}
-
-    # Read basic attributes
-    data[:title] = f.tag2["TIT2"]
-    data[:bpm] = f.tag2["TBPM"]
-    data[:name] = f.tag2["TPE1"]
-    # data[:album_artist] = f.tag2["TPE2"]
-    data[:year] = f.tag2["TYER"]
-    data[:track_number] = f.tag2["TRCK"]
-    data[:genre_attributes] = f.tag2["TCON"]
-    data[:length] = f.length.to_i
-    data[:size] = x.size * 1024
-    # binding.pry
-    data[:name] = data[:name].split("/")
-    data[:album_attributes] = f.tag2["TALB"]
+    self.album = Album.find_or_create_by_name(f.tag2["TALB"])
+    self.album.artist = Artist.find_or_create_by_name(f.tag2["TPE2"])
+    self.genre = Genre.find_or_create_by_name(f.tag2["TCON"])
     binding.pry
-    # data[:artist] = {:name => data[:artist]}
-    # # Access all frames
-    # tag.frame_list.size
+    # self.album_artist = Artist.find_or_create_by_name(f.tag2["TPE2"])
 
-    # # Track frame
-    # track = tag.frame_list('TRCK').first
-    # @trackdata[:length] = track.to_s
-
+    f.tag2["TPE1"].split("/").each do |i|
+      a = [] 
+      a[0] = Artist.find_or_create_by_name(i)
+      # binding.pry
+      self.artists << a
+      # binding.pry
+    end
+    # binding.pry
+    
     # # Attached picture frame
     # cover = tag.frame_list('APIC').first
     # cover.mime_type
     # cover.picture
-    self.parse_artist(data)
+    # self.parse_artist(data)
     # binding.pry
   end
 end
 
-  def parse_artist(track)
-    @y = []
-    track.name.each do |artist|
-      x = {}      
-      x[:name] = artist
-      @y << x
-    end
-    track[:name] = {}
-    # track[:name] = {:artists=>@y}
-    track[:artists_attributes] = @y
-    # binding.pry
-  end
+  # def parse_artist(track)
+  #   binding.pry
+  #   @y = []
+  #   track.name.each do |artist|
+  #     x = {}      
+  #     x[:name] = artist
+  #     @y << x
+  #   end
+  #   track[:name] = {}
+  #   # track[:name] = {:artists=>@y}
+  #   track[:artists_attributes] = @y
+  #   # binding.pry
+  # end
 
 end

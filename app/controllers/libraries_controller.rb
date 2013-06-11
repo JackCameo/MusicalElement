@@ -34,7 +34,7 @@ class LibrariesController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @library = Library.new(params[:library])
     respond_to do |format|
       if @library.save
