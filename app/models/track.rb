@@ -46,7 +46,7 @@ class Track < ActiveRecord::Base
     self.album = Album.find_or_create_by_name(f.tag2["TALB"])
     self.album.artist = Artist.find_or_create_by_name(f.tag2["TPE2"])
     self.genre = Genre.find_or_create_by_name(f.tag2["TCON"])
-    binding.pry
+    # binding.pry
     # self.album_artist = Artist.find_or_create_by_name(f.tag2["TPE2"])
 
     f.tag2["TPE1"].split("/").each do |i|

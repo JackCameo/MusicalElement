@@ -1,5 +1,9 @@
 <h1>Playlists#index</h1>
-<p>Find me in app/views/playlists/index.html.erb</p>
+<% @playlists.each do |pl| %>
+
+<td><%= pl.name %></td>
+<% end %>
+
 
 <%= link_to 'Create Playlist', new_library_playlist_path(@library.id) %> | 
 <%= link_to 'Back', library_path(current_user.library) %>

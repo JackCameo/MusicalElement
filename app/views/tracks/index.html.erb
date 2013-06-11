@@ -4,8 +4,9 @@
 <table>
   <tr>
     <th>Track #</th>
-    <th>Artist</th>
+    <th>Album Artist</th>
     <th>Title</th>
+    <th>Featured Artist</th>
     <th>Album</th>
     <th>Year</th>
     <th>Genre</th>
@@ -18,16 +19,15 @@
 <% @tracks.each do |track| %>
   <tr>
     <td><%= track.track_number %></td>
-    <%# binding.pry %>
-    <td><%= track.artists.name %></td>
+    <td><%= track.album.artist.name %></td>
     <td><%= track.title %></td>
-    <td><%= track.album.name %></td>    
-    <td><%#= track.album_artist %></td>
+    <%# binding.pry %>
+    <td><%= track.artists.map{ |a| [a][0].name } %></td>
+    <td><%= track.album.name %></td>
     <td><%= track.year %></td>
     <td><%= track.genre.name %></td>
     <td><%= track.length %></td>
     <td><%= track.size %></td>
-
     <td><%= track.bpm %></td>
     <td><%#= track.tpath %></td>
     <td><%#= link_to 'Show', library_track_path %></td>

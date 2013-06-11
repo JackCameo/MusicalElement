@@ -20,13 +20,21 @@ class PlaylistsController < ApplicationController
   end
 
   def show
+    @playlist = Playlist.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @playlist }
+    end
   end
 
   def edit
   end
 
   def create
+    # binding.pry
     @playlist = Playlist.new(params[:playlist])
+    binding.pry
     if @playlist.save
       format.html { redirect_to playlist_track_path(@playlist, @playlist), notice: 'Track was successfully created.' }
       format.json { render json: @playlist_track, status: :created, location: @playlist }

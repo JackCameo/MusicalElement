@@ -1,9 +1,10 @@
 <table>
   <tr>
     <th>Track #</th>
-    <th>Artist</th>
-    <th>Title</th>
     <th>Album Artist</th>
+    <th>Title</th>
+    <th>Featured Artist</th>
+    <th>Album</th>
     <th>Year</th>
     <th>Genre</th>
     <th>Length</th>
@@ -11,17 +12,15 @@
     <th>BPM</th>
     
   </tr>
+<div class="track-info">
+    <%# binding.pry %>
+    <% @tracks.each do |track| %>
+        <% form_for track do |f| %>
+      <%# binding.pry %>
+        <td><%= f.track_number %></td>
 
-<% @tracks.each do |track| %>
-  <tr>
-    <td><%= track.track_number %></td>
-    <td><%#= track.artist %></td>
-    <td><%= track.title %></td>
-    <td><%#= track.album_artist %></td>
-    <td><%= track.year %></td>
-    <td><%#= track.genre %></td>
-    <td><%= track.length %></td>
-    <td><%= track.size %></td>
+        <% end %>
+        <% end %>
+</div>
 
-    <td><%= track.bpm %></td>
-    <% end %>
+    <!-- Footer -->

@@ -13,32 +13,25 @@
     </div>
   <% end %>
 
-  <%# f.fields_for @tracks do |track| %>
-    <%#= track.check_box :track %>
-    <%#= track.label :track, "Add Song" %>
-    <%# end %>
-
-<!--   <div class="field">
-    <%#= f.label :name %><br />
-    <%#= f.text_field :name %>
-  </div> -->
-<!--   <div class="field">
-      <%#= f.hidden_field :library_id %>
-  </div> -->
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
 
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-    <%#= f.hidden_field :library_id %>
-  </div>
 
-  <div class="field">
-    <%#= f.hidden_field :user_id %>
+    <ol id="sortable">
+      <%# @fruits.each do |fruit| %>
+        <li>
+          <%= render :partial => 'tracks', :locals => {:track => @tracks} %>
+          <%#= render :partial => 'fruits/fruit', :locals => { :fruit => fruit } %>
+        </li>
+      <%# end %>
+    </ol>
   </div>
-
 
   <div class="actions">
     <%= f.submit %>
@@ -46,8 +39,3 @@
 <% end %>
 
 
-<div class="map">
-  <%= render :partial => 'tracks', :locals => {:track => @tracks} %>
-</div>
-
-:position, :track_id, :user_id, :library_id
