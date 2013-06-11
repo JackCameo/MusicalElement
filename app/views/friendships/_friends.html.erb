@@ -1,0 +1,61 @@
+<div class="friends">
+  <h2>Friends</h2>
+    <table>
+      <tr>
+      <th colspan="3" align="left">
+        <%= pluralize(current_user.friends.count, "friend") %>
+
+      </th>
+    </tr>
+
+    <% current_user.friends.each do |friend| %>
+    <tr>
+     <td width="150"> <%= image_tag friend.avatar(:thumb) %></td>
+     <td><%= friend.email %>
+      <%= link_to "Remove Friend", delete_friendships_path(:id=>friend.id), :action => 'delete', :id => friend.id, :confirm => "Really delete friendship with #{friend.email}?" %>
+
+
+    </td>
+  </tr>
+  <%end%>
+
+</div>
+<div class="requests">
+
+<% unless current_user.requested_friends.empty? %>
+  <tr>
+    <th colspan = "3" align="left">
+      <%= pluralize(current_user.requested_friends.count, "friend request") %>
+    </th>
+  </tr>
+  <%  current_user.requested_friends.each do |requester| %>
+  <tr>
+    <td><%= image_tag requester.avatar(:thumb) %></td>
+    <td><%= link_to requester.email %></td>
+    <td><%= link_to "Accept", accept_friendships_path(:id=>requester.id) %> /
+    <%= link_to "Decline", decline_friendships_path(:id=>requester.id), :confirm => "Decline friendship?" %></td>
+
+
+</tr>
+  <% end %>
+<% end %>
+</div>
+
+<div class="pending">
+<% unless current_user.pending_friends.empty? %>
+  <tr>
+    <th colspan = "3" align="left">
+      <%= pluralize(current_user.pending_friends.count, "pending friend") %>
+    </th>
+  </tr>
+
+  <% current_user.pending_friends.each do |pending_friend| %>
+  <tr>
+    <td><%= image_tag pending_friend.avatar(:thumb) %></td>
+    <td><%= link_to pending_friend.email %></td>
+    <td><%= link_to "Cancel Request", cancel_friendships_path(:id=>pending_friend.id), :action => "cancel", :id => pending_friend.id, :confirm => "Cancel Friend Request?" %> </td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+</div>

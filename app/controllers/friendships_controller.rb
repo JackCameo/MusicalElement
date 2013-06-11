@@ -1,19 +1,64 @@
 class FriendshipsController < ApplicationController
-  def create
-    @friendship = current_user.friendships.new(:friend_id => params[:friend_id])
-    if @friendship.save
-      flash[:notice] = "Added friend."
-      redirect_to root_url
-    else
-      flash[:error] = "Unable to add friend."
-      redirect_to root_url
-    end
+  before_filter :authenticate_user!, :setup_friends
+
+  def friend_request
+    Friendship.request(current_user.id, params[:id])
+    flash[:notice] = "Friendship request sent!"
+    redirect_to root_url
   end
 
-  def destroy
-    @friendship = current_user.friendships.find(params[:id])
-    @friendship.destroy
-    flash[:notice] = "Removed friendship."
-    redirect_to current_user
+  def accept
+    if @user.requested_friends.include?(@friend)
+      Friendship.accept(current_user.id, params[:id])
+      flash[:notice] = "Friendship with {@friend.email} accepted!"
+    else
+      flash[:notice] = "No friendship request from that person."
+    end
+    redirect_to root_url
   end
+
+  def decline
+     binding.pry
+    if @user.requested_friends.include?(@friend)
+      Friendship.breakup(@user.id, @friend.id)
+      flash[:notice] = "Friendship with #{@friend.email} declined."
+    else
+      flash[:notice] = "No friendship request from that person."
+    end
+    redirect_to root_url
+end
+
+def cancel
+  if @user.pending_friends.include?(@friend)
+    Friendship.breakup(@user.id, @friend.id)
+    flash[:notice] = "Friendship request canceled."
+  else
+    flash[:notice] = "No request for friendship with that person."
+  end
+  redirect_to root_url
+end
+
+def delete
+
+  if @user.friends.include?(@friend)
+    Friendship.breakup(@user.id, @friend.id)
+    flash[:notice] = "Friendship with #{@friend.email} deleted"
+  else
+    flash[:notice] = "You arent friends with that person."
+  end
+  redirect_to root_url
+end
+
+  def create
+    Friendship.request(@user.id, @friend.id)
+    flash[:notice] = "Friend Request Sent"
+    redirect_to root_url
+  end
+
+  private
+    def setup_friends
+      @user = current_user
+      @friend = User.find(params[:id]) if params[:id]
+
+end
 end
