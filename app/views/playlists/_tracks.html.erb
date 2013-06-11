@@ -13,14 +13,25 @@
     
   </tr>
 <div class="track-info">
+    <td><%= form_for track, {:url => library_playlists_path(@library.id)} do |f| %></td>
     <%# binding.pry %>
-    <% @tracks.each do |track| %>
-        <% form_for track do |f| %>
-      <%# binding.pry %>
-        <td><%= f.track_number %></td>
-
+        <td><% @tracks.each do |track| %></td>
+        <%# binding.pry %>
+    <tr>
+        <td><%= track.track_number %></td>
+        <td><%= track.album.artist.name %></td>
+        <td><%= track.title %></td>
+        <td><%= track.artists.map{ |a| [a][0].name }.join(", ") %></td>
+        <td><%= track.album.name %></td>
+        <td><%= track.year %></td>
+        <td><%= track.genre.name %></td>
+        <td><%= track.length %></td>
+        <td><%= track.size %></td>
+        <td><%= track.bpm %></td>
+        <td><%= check_box_tag(:track) %></td>
         <% end %>
-        <% end %>
+    </tr>
+    <% end %>
 </div>
 
     <!-- Footer -->

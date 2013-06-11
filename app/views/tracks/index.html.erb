@@ -21,8 +21,7 @@
     <td><%= track.track_number %></td>
     <td><%= track.album.artist.name %></td>
     <td><%= track.title %></td>
-    <%# binding.pry %>
-    <td><%= track.artists.map{ |a| [a][0].name } %></td>
+    <td><%= track.artists.map{ |a| [a][0].name }.join(", ") %></td>
     <td><%= track.album.name %></td>
     <td><%= track.year %></td>
     <td><%= track.genre.name %></td>
@@ -30,7 +29,7 @@
     <td><%= track.size %></td>
     <td><%= track.bpm %></td>
     <td><%#= track.tpath %></td>
-    <td><%#= link_to 'Show', library_track_path %></td>
+    <td><%#= link_to 'Show', library_track_path, {:url => library_track_path(@library.id)} %></td>
     <td><%#= link_to 'Edit', edit_library_track_path(track) %></td>
     <td><%#= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to 'Destroy', library_track_path(@library, track), :method => 'delete', data: { confirm: 'Are you sure?' } %></td>
