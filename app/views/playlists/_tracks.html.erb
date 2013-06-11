@@ -1,9 +1,10 @@
 <table>
   <tr>
     <th>Track #</th>
-    <th>Artist</th>
-    <th>Title</th>
     <th>Album Artist</th>
+    <th>Title</th>
+    <th>Featured Artist</th>
+    <th>Album</th>
     <th>Year</th>
     <th>Genre</th>
     <th>Length</th>
@@ -12,16 +13,28 @@
     
   </tr>
 
-<% @tracks.each do |track| %>
-  <tr>
-    <td><%= track.track_number %></td>
-    <td><%#= track.artist %></td>
-    <td><%= track.title %></td>
-    <td><%= track.album_artist %></td>
-    <td><%= track.year %></td>
-    <td><%= track.genre %></td>
-    <td><%= track.length %></td>
-    <td><%= track.size %></td>
+   <%#= form_for track, {:url => library_playlists_path(@library.id)} do |f| %>
+    <%# binding.pry %>
+    <% @tracks.each do |track| %>
+        <%# binding.pry %>
+    <tr class="track-info">
+        <td><%= track.track_number %></td>
+        <td><%= track.album.artist.name %></td>
+        <td><%= track.title %></td>
+        <td><%= track.artists.map{ |a| [a][0].name }.join(", ") %></td>
+        <td><%= track.album.name %></td>
+        <td><%= track.year %></td>
+        <td><%= track.genre.name %></td>
+        <td><%= track.length %></td>
+        <td><%= track.size %></td>
+        <td><%= track.bpm %></td> 
+        <%#= f.fields_for "playlist[playlist_tracks_attributes][]" do |p| %>
+        <td><%= check_box_tag("playlist[playlist_tracks_attributes][][track_id]", track.id) %></td> 
+        <%# end %> 
+    </tr>
 
-    <td><%= track.bpm %></td>
     <% end %>
+    <%# end %>
+</table>
+
+    <!-- Footer -->

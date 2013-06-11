@@ -15,6 +15,7 @@ gem 'ruby-mp3info'
 gem 'mysql2'
 gem "paperclip", "~> 3.0"
 gem 'carrierwave'
+gem 'mediawiki-gateway'
 gem "better_errors"
 gem "binding_of_caller"
 

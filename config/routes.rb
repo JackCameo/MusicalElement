@@ -20,7 +20,7 @@ MusicalElement::Application.routes.draw do
     end
   end
 
-  resources :playlists
+  # resources :playlists
 
   root :to => 'home#index'
 

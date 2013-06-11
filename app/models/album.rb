@@ -1,7 +1,7 @@
 class Album < ActiveRecord::Base
-  attr_accessible :image_url, :name, :description, :album_artist
+  attr_accessible :image_url, :name, :description, :album_artist, :artist_id
 
-  belongs_to :artist, :foreign_key => :album_artist, :primary_key => :artist_id
+  belongs_to :artist#, :foreign_key => :album_artist, :primary_key => :artist_id
   has_many :tracks, :through => :album_tracks
   # has_many :featured_artists
   # has_many :artists
