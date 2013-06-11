@@ -12,7 +12,7 @@
     <tr>
      <td width="150"> <%= image_tag friend.avatar(:thumb) %></td>
      <td><%= friend.email %>
-      <%= link_to "Delete", delete_friendships_path(@friend), :action => 'delete', :id => friend.id, :confirm => "Really delete friendship with #{friend.email}?" %>
+      <%= link_to "Remove Friend", delete_friendships_path(:id=>friend.id), :action => 'delete', :id => friend.id, :confirm => "Really delete friendship with #{friend.email}?" %>
 
 
     </td>
