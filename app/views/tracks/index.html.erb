@@ -28,6 +28,7 @@
     <td><%= track.length %></td>
     <td><%= track.size %></td>
     <td><%= track.bpm %></td>
+    <td> Sound: <%= rating_for track, "sound" %></td>
     <td><%#= track.tpath %></td>
     <td><%#= link_to 'Show', library_track_path, {:url => library_track_path(@library.id)} %></td>
     <td><%#= link_to 'Edit', edit_library_track_path(track) %></td>
@@ -40,7 +41,8 @@
 <br />
 
 <%= link_to 'Upload Music', new_library_track_path(@library.id) %> |
-<%= link_to 'Back', library_path(current_user.library) %>
+<%= link_to 'Back', library_path(current_user.library) %>  |
+
 
 
 
