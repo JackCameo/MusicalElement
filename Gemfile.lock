@@ -74,6 +74,8 @@ GEM
     jquery-rails (3.0.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-star-rating-rails (4.0.4)
+      rails (>= 3.1.0)
     json (1.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -173,6 +175,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise (~> 2.2.4)
   jquery-rails
+  jquery-star-rating-rails
   mediawiki-gateway
   mysql2
   paperclip (~> 3.0)
