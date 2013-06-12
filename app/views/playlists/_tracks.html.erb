@@ -10,6 +10,8 @@
     <th>Length</th>
     <th>Size</th>
     <th>BPM</th>
+    <th>Ratings</th>
+    <th> </th>
     
   </tr>
 
@@ -27,7 +29,9 @@
         <td><%= track.genre.name %></td>
         <td><%= track.length %></td>
         <td><%= track.size %></td>
-        <td><%= track.bpm %></td> 
+        <td><%= track.bpm %></td>
+        <td>Sound: <%= rating_for track, "sound" %></td>
+        <td><%= image_tag 'playbutton.png', :class => "playbutton" %></td> 
         <%#= f.fields_for "playlist[playlist_tracks_attributes][]" do |p| %>
         <td><%= check_box_tag("playlist[playlist_tracks_attributes][][track_id]", track.id) %></td> 
         <%# end %> 

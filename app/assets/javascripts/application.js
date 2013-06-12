@@ -16,6 +16,7 @@
 //= require foundation
 //= require underscore
 //= require backbone
+//= require soundmanager2
 //= require_tree .
 
 $(document).foundation();
