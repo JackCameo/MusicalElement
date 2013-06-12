@@ -1,6 +1,9 @@
 MusicalElement::Application.routes.draw do
 
+
   get "search/index"
+  match '/rate' => 'rater#create', :as => 'rate'
+
 
   get "users/add"
 

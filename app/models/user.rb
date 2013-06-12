@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :age, :name, :library_id, :avatar, :status
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "50x40>" }, :default_url => "http://community.nasdaq.com/common/images/defaultUserAvatar.jpg"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://community.nasdaq.com/common/images/defaultUserAvatar.jpg"
+  letsrate_rater
+
 
   has_one :library
   has_many :friendships

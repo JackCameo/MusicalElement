@@ -17,7 +17,9 @@ gem 'carrierwave'
 gem 'mediawiki-gateway'
 gem "better_errors"
 gem "binding_of_caller"
-gem  'mysql2', '0.3.12b4'
+gem 'mysql2', '0.3.12b4'
+gem 'letsrate'
+
 
 
 
