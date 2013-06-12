@@ -12,6 +12,8 @@ class Playlist < ActiveRecord::Base
 
   accepts_nested_attributes_for :tracks
   accepts_nested_attributes_for :playlist_tracks
+
+  letsrate_rateable "playlist"
   
 
   def included

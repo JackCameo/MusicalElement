@@ -2,4 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', library_tracks_path(current_user.library) %>
+<%= link_to 'View All Tracks', library_tracks_path(current_user.library) %>  |
+<%= link_to 'Back to Playlist', new_library_playlist_path(@library.id) %>  |
