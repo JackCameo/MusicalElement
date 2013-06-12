@@ -5,6 +5,7 @@ MusicalElement::Application.routes.draw do
   get "users/add"
 
   devise_for :users
+  resources :artists
 
   resources :libraries do
     resources :tracks
