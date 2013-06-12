@@ -2,15 +2,9 @@ require 'taglib'
 require "mp3info"
 class Track < ActiveRecord::Base
   attr_accessible :name, :title, :tpath, :track_number, :year, :bpm, :length, :size, :user_id, :artists_attributes, :album_attributes
-  attr_accessible :genre_attributes, :album_id, :genre_id, :genre, :album, :album_artist, :artists
+  attr_accessible :genre_attributes, :album_id, :genre_id, :genre, :album, :album_artist, :artists, :index
 
   mount_uploader :tpath, TpathUploader
-
-  define_index do
-    indexes :name
-    indexes :title
-    indexes :bpm
-  end
 
   belongs_to :user
   # belongs_to :playlist

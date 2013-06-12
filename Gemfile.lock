@@ -85,7 +85,7 @@ GEM
     middleware (0.1.0)
     mime-types (1.23)
     multi_json (1.7.4)
-    mysql2 (0.3.11)
+    mysql2 (0.3.12b4)
     orm_adapter (0.4.0)
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
@@ -174,7 +174,7 @@ DEPENDENCIES
   devise (~> 2.2.4)
   jquery-rails
   mediawiki-gateway
-  mysql2
+  mysql2 (= 0.3.12b4)
   paperclip (~> 3.0)
   pg
   pry

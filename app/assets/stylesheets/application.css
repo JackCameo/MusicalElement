@@ -12,7 +12,3 @@
  *= require_tree .
  */
  *= require foundation_and_overrides
-
-.top-bar img{
-  height:45px;
-}

@@ -58,12 +58,12 @@
 
             <ul class="right">
               <li class="search">
-                <%= form_tag search_index_path, :method => :get do %>
-                  <div class="search">
-                    <%= text_field_tag :search, params[:search]%>
-                    <%= submit_tag "Search", name: nil %>
-                  </div>
+              <div class="search-box">
+                <%= form_tag search_path do %>
+                  <%= text_field_tag :search_box, nil, :id => "search_box" %>
+                  <%= submit_tag "Search" %>
                 <% end %>
+              </div>
               </li>
 
               <li class="has-button">
@@ -74,6 +74,7 @@
              <% unless !user_signed_in? %>
               <%= image_tag current_user.avatar(:thumb) %>
              <% end %>
+
 
 
           </section>
@@ -109,6 +110,6 @@
         </div>
       </div>
     </footer>
-    
+
   </body>
 </html>

@@ -20,6 +20,8 @@ MusicalElement::Application.routes.draw do
     end
   end
 
+ match '/search' => 'search#search', :as => 'search'
+
   # resources :playlists
 
   root :to => 'home#index'
