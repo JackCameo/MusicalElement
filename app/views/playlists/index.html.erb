@@ -1,7 +1,7 @@
 <h1>PlayLists</h1>
 
   <% @playlists.each do |pl| %>
-  <table>
+  <table id="draggable-<%= pl.id %>" class="ui-widget-content">
     <tr>
         <th><%= pl.name %></th>
     </tr>

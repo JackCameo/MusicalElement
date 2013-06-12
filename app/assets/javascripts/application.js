@@ -18,16 +18,16 @@
 //= require backbone
 //= require_tree .
 
-$(document).foundation();
+// $(document).foundation();
 
-function remove_fields(link) {
-    $(link).prev("input[type=hidden]").val("1");
-    $(link).closest(".fields").hide();
-}
+// function remove_fields(link) {
+//     $(link).prev("input[type=hidden]").val("1");
+//     $(link).closest(".fields").hide();
+// }
  
-function add_fields(link, association, content) {
-    var new_id = new Date().getTime();
-    var regex = new RegExp("new_" + association, "g");
-    $(link).parent().after(content.replace(regex, new_id));
-    $('#new-pilot-fields').modal('show');
-}
+// function add_fields(link, association, content) {
+//     var new_id = new Date().getTime();
+//     var regex = new RegExp("new_" + association, "g");
+//     $(link).parent().after(content.replace(regex, new_id));
+//     $('#new-pilot-fields').modal('show');
+// }

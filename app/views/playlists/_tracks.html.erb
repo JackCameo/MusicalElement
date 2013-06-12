@@ -1,4 +1,4 @@
-<table>
+<table id="draggable" class="ui-widget-content">
   <tr>
     <th>Track #</th>
     <th>Album Artist</th>
@@ -16,8 +16,8 @@
    <%#= form_for track, {:url => library_playlists_path(@library.id)} do |f| %>
     <%# binding.pry %>
     <% @tracks.each do |track| %>
-        <%# binding.pry %>
-    <tr class="track-info">
+   <tbody id="draggable-<%= track.id %>" class="ui-widget-content">
+    <tr>
         <td><%= track.track_number %></td>
         <td><%= track.album.artist.name %></td>
         <td><%= track.title %></td>
@@ -32,6 +32,7 @@
         <td><%= check_box_tag("playlist[playlist_tracks_attributes][][track_id]", track.id) %></td> 
         <%# end %> 
     </tr>
+   </tbody>     <%# binding.pry %>
 
     <% end %>
     <%# end %>
