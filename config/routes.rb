@@ -1,5 +1,7 @@
 MusicalElement::Application.routes.draw do
 
+  match '/rate' => 'rater#create', :as => 'rate'
+
   get "users/add"
 
   devise_for :users

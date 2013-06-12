@@ -19,6 +19,8 @@ class Track < ActiveRecord::Base
   has_many :playlist_tracks
   has_many :artists, :through => :artist_tracks
   has_many :artist_tracks
+
+  letsrate_rateable "sound"
   
   # has_one :album_artist, :foreign_key => :artist_id, :primary_key => :artist_id
   # belongs_to :album_artist, :foreign_key => :artist_id, :primary_key => :artist_id

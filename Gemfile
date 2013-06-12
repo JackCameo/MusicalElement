@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'mediawiki-gateway'
 gem "better_errors"
 gem "binding_of_caller"
+gem 'letsrate'
 
 
 
