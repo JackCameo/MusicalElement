@@ -45,7 +45,7 @@
               <% if user_signed_in? %>
 
               <li><a href="#"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
-              <li><a href="#"><%= link_to 'Friends', users_path, :method => :get %></a></li>
+              <li><a href="#"><%= link_to 'Friends', friendships_path, :method => :get %></a></li>
                 <% if current_user.library != nil %>
                   <li><a href="#"><%= link_to 'Music Library', library_path(current_user.library) %></a></li>
                     <% else %>
@@ -58,20 +58,20 @@
               <!-- <li><a href="#">Link 2</a></li> -->
             </ul>
 
-            <ul class="right">
-              <li class="search">
-              <div class="search-box">
-                <%= form_tag search_path do %>
+             <ul class="right">
+            <li class="search">
+               <%= form_tag search_path do %>
                   <%= text_field_tag :search_box, nil, :id => "search_box" %>
-                  <%= submit_tag "Search" %>
                 <% end %>
-              </div>
-              </li>
+            </li>
+            <li class="has-button">
+              <a class="small button" href="#">Search</a>
+            </li>
+          </ul>
+        </section>
+      </nav>
 
-              <li class="has-button">
-                <a class="small button" href="#">Search</a>
-              </li>
-            </ul>
+
 
              <% unless !user_signed_in? %>
               <%#= image_tag current_user.avatar(:thumb) %>

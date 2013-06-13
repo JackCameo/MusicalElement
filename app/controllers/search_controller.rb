@@ -1,7 +1,6 @@
 class SearchController < ApplicationController
   def search
-    @results = Track.search(params[:search_box]) + User.search(params[:search_box])
-    binding.pry
+    @results = Track.search(params[:search_box])
   end
 end
 

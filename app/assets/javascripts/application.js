@@ -18,7 +18,7 @@
 // require backbone
 //= require_tree .
 
- $(document).foundation();
+$(document).foundation();
 
 // function remove_fields(link) {
 //     $(link).prev("input[type=hidden]").val("1");

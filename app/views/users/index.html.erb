@@ -1,11 +1,16 @@
+
+
 <div class="users">
-<h1>Users</h1>
-<% @users.each do |user|  %>
+<h1>Find Friends</h1>
+<table>
 <tr>
+<% @users.each do |user|  %>
+
 <td><%= image_tag user.avatar(:thumb) %></td>
 <td><%= user.email %>
 <%= link_to "Send Friend Request", friend_request_friendship_path(user) %></td>
 </tr>
 <% end %>
+</table>
 </div>
 
