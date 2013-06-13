@@ -1,16 +1,17 @@
-$(document).ready(function() {
 
+$(document).ready(function() {
+  // $('.stopbutton').hide();
   $('.playbutton').click(function() {
       // $(this).data("track-id")
     soundManager.play('mySound-'+$(this).data("track-id"));
-    $(this).data("track-id").toggle();
-    $('.stopbutton').toggle();
+    $('.playbutton').data("track-id").hide();
+    $('.stopbutton').show();
   });
 
   $('.stopbutton').click(function() {
-    soundManager.stop('mySound'+$(this).data("track-id"));
+    soundManager.stop('mySound-'+$(this).data("track-id"));
+    $('.stopbutton').data("track-id").toggle();
     $(this).toggle();
-    $('.playbutton').toggle();
   });
 
 });

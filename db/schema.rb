@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130612051248699) do
     t.date     "birthdate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "image"
   end
 
   create_table "comments", :force => true do |t|

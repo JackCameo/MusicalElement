@@ -1,3 +1,10 @@
+
+<% @artists.each do |artist| %>
+<%= render :partial => 'artist', :locals => {:artist => artist} %>
+
+<% end %>
+
+
 <div class="row">
     <div class="large-12 columns">
  

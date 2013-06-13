@@ -31,9 +31,9 @@
     <td><%= track.length %></td>
     <td><%= track.size %></td>
     <td><%= track.bpm %></td>
-    <td>Sound: <%= rating_for track, "sound" %></td>
+    <td>Sound: <%#= rating_for track, "sound" %></td>
     <td><%= image_tag 'playbutton.png', :class => "playbutton", :data => { :track_id => track.id} %></td>
-    <!-- <td><%#= image_tag 'stopbutton.png', :class => "stopbutton" %></td> -->
+    <td><%= image_tag 'stopbutton.png', :class => "stopbutton", :data => { :track_id => track.id} %></td> -->
     <% @track = track %>
     <td><%#= link_to 'Show', library_track_path, {:url => library_track_path(@library.id)} %></td>
     <td><%#= link_to 'Edit', edit_library_track_path(track) %></td>
@@ -51,7 +51,7 @@ $(document).ready(function(){
       soundManager.createSound({
         id: 'mySound-<%= track.id %>',
         url: '<%= track.tpath.url %>',
-        autoLoad: false,
+        autoLoad: true,
         autoPlay: false,
         onload: function() {
           // alert('The sound '+this.id+' loaded!');

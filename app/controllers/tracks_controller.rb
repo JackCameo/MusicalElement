@@ -92,6 +92,11 @@ class TracksController < ApplicationController
     end
   end
 
+  def lend
+    binding.pry
+  end
+
+
   protected
   def load_library
     @library = Library.find(params[:library_id])

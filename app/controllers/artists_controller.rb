@@ -3,7 +3,16 @@ class ArtistsController < ApplicationController
 
     def index
     # binding.pry
-    @artists = current_user.library.tracks
+    @tracks = current_user.library.tracks
+    @artists = []
+    @tracks.each do |a|
+      a.artists.each do |i|
+        # binding.pry
+      @artists << i
+      end      
+    end
+    @artists.uniq!
+    # binding.pry
 
     respond_to do |format|
       format.html # index.html.erb
