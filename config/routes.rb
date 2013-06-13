@@ -8,9 +8,14 @@ MusicalElement::Application.routes.draw do
   get "users/add"
 
   devise_for :users
+  resources :artists
 
   resources :libraries do
-    resources :tracks
+    resources :tracks do
+      member do
+      post 'lend'
+    end
+  end
     resources :playlists
   end
   resources :users

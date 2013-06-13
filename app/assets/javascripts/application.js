@@ -14,8 +14,9 @@
 //= require jquery_ujs
 // require jquery-ui-1.10.3.custom
 //= require foundation
-// require underscore
-// require backbone
+//= require underscore
+//= require backbone
+//= require soundmanager2
 //= require_tree .
 
 $(document).foundation();
