@@ -14,6 +14,7 @@ require "mp3info"
 
   # Choose what kind of storage to use for this uploader:
   storage :file
+  # storage :fog
 
   # before :store, :remember_cache_id
   # after :store, :delete_tmp_dir
