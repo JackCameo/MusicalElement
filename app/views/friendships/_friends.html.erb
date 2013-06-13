@@ -12,8 +12,8 @@
     <tr>
      <td width="150"> <%= image_tag friend.avatar(:thumb) %></td>
      <td><%= friend.email %>
+      <%= link_to "View Music Library", playlists_friendships_path(:id=>friend.id), :action => 'get', :id => friend.id %>
       <%= link_to "Remove Friend", delete_friendships_path(:id=>friend.id), :action => 'delete', :id => friend.id, :confirm => "Really delete friendship with #{friend.email}?" %>
-
 
     </td>
   </tr>
