@@ -1,0 +1,12 @@
+"test";
+var user = "<%= @user = User.find_by_id(current_user.id) %>";
+var friends = "<%= @friends = @user.friendships %>";
+var tracks = "<%= @tracks = @user.library.tracks %>";
+<%# binding.pry %>
+
+// var userCardTask = "<%= escape_javascript(render :partial => 'users/user_card_task', :locals => {:user => @user, :task => @task}) %>";
+// $('.taks-assigned-users[task-id=' + taskId + ']').append(userCardTask);
+
+// // shakes the task to show that the drop has been registered
+// var taskEff = $('.task[data-task-id=' + taskId + ']');
+// taskEff.effect( "shake" );
