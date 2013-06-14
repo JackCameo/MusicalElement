@@ -4,6 +4,8 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+# gem 'cmake-heroku', :git => 'git://github.com/pjkelly/cmake-heroku.git'
+# gem 'taglib-heroku', :git => 'git://github.com/pjkelly/taglib-heroku.git'
 gem 'thinking-sphinx', '~> 3.0.2'
 gem 'pg'
 gem "devise", "~> 2.2.4"
