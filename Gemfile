@@ -20,10 +20,11 @@ gem "fog", "~> 1.3.1"
 gem 'mediawiki-gateway'
 gem "better_errors"
 gem "binding_of_caller"
-gem 'mysql2'
+gem 'mysql2', '0.3.12b4'
 gem 'letsrate'
 gem 'rspec-rails'
 gem 'guard-rspec'
+gem 'simplecov', :require => false, :group => :test
 
 
 
