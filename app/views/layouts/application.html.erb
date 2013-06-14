@@ -52,9 +52,20 @@
                     <li><a href="#"><%= link_to 'Add Library', new_library_path %></a></li>
                 <% end %>
                 <% else %>
-                <li><a href="#"><%= link_to('Login', new_user_session_path)  %></a></li>
+
+                <li>
+                   <a class="small button" href="#" data-reveal-id="myModal">Sign In</a>
+                  <div id="myModal" class="reveal-modal">
+                         <%= render 'users/registrations/new' %>
+
+                         <a class="close-reveal-modal">&#215;</a>
+                    </div>
+                  </a>
+                </li>
+
 
               <% end %>
+
               <!-- <li><a href="#">Link 2</a></li> -->
             </ul>
 
